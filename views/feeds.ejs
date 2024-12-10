@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snapgram</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/fontawesome-web/css/all.css">
+    <link rel="stylesheet" href="/css/fontawesome-web/css/all.min.css">
+    <link rel="stylesheet" href="/css/custom/pages.css">
+    <link rel="stylesheet" href="/css/custom/text.css">
+    <link rel="stylesheet" href="/css/custom/all.css">
+</head>
+
+<body id="body">
+    <section class="pages-section">
+        <div class="row">
+            <div class="col-12 col-md-3 col-lg-3 col-xl-2 order-1 order-md-1">
+                <div id="sidebar" class="sidebar" role="navigation">
+                    <!-- sidebar -->
+                    <%- include('sidebar') %>
+
+                </div>
+            </div>
+            <div class="col-12 col-md-9 col-lg-9 col-xl-10 order-2 order-md-2 page-content" role="main">
+                <div class="cust-container">
+                    <div class="row">
+                        <% posts.forEach((p)=>{%>
+                            <div class="col-12 col-md-6 mb-4">
+                                <div class="post-card">
+                                    <!-- Card Header -->
+                                    <div class="card-header d-flex">
+                                        <div >
+                                            <img class="profile-photo" src="/images/pages/profile-photo.svg"
+                                                alt="profile-photo">
+                                        </div>
+                                        <div class="p-3">
+                                            <p class="profile-name-text"><%=p.username%></p>
+                                        </div>
+                                    </div>
+                                    <!-- Image -->
+                                    <img src="<%=p.image%>" class="post-image" alt="Siemens">
+                                    <!-- Card Body -->
+                                    <div class="card-body">
+                                        <p class="post-text">
+                                            <%=p.caption%>
+                                        </p>
+                                    </div>
+                                    
+        
+                                    <!-- Card Footer -->
+                                    <div class="card-footer d-flex justify-content-between align-items-center">
+                                        <%if(p.likes.includes(user.id)){%>
+                                            <a href="/post/<%=p.id%>/like"><i class="fa-solid fa-heart" style="cursor: pointer; color: rgb(255, 1, 1);"></i> <%=p.likes.length%></a>
+
+                                        <%}else{%>
+                                            <a href="/post/<%=p.id%>/like"><i class="fa-regular fa-heart" style="cursor: pointer; color: white;"></i> <%=p.likes.length%></a>
+                                        <%}%>
+                                        <i class="fa-regular fa-comment" style="cursor: pointer; color: white;"></i>
+
+
+                                       <a href="https://api.whatsapp.com/send?text=i saw this wonderful post on snapgram posted by <%=p.username%> have a look at it , visit http://192.168.1.13:8000/post/<%=p.id%>"> <i class="fa-solid fa-share" style="cursor: pointer; color: white;"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        <%})%>
+                       
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <script src="./sidebar.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script>
+        $('#a1').addClass('sidebar-item-active')
+
+        shareButton.addEventListener("click", async () => {
+            try {
+                await navigator.share({ title: "Example Page", url: "" });
+                console.log("Data was shared successfully");
+            } catch (err) {
+                alert("Share failed:");
+            }
+        });
+    </script>
+</body>
+
+</html>

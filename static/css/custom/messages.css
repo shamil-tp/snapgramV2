@@ -1,0 +1,18 @@
+.message-head{
+    width: 100%;
+    background-color: rgba(0, 255, 255, 0);
+    border-bottom:2px solid rgb(106, 106, 106);
+}
+.message-box{
+    width: 47%;
+    border-radius: 2rem;
+    padding:1% 1% 1% 2%;
+    font-size: 1.2rem;
+}
+.sent{
+    background-color: rgb(144, 0, 255);
+    color: rgb(255, 255, 255);
+}
+.receive{
+    background-color: rgb(228, 218, 25);
+}

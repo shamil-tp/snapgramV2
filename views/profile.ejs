@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snapgram</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/fontawesome-web/css/all.css">
+    <link rel="stylesheet" href="/css/fontawesome-web/css/all.min.css">
+    <link rel="stylesheet" href="/css/custom/pages.css">
+    <link rel="stylesheet" href="/css/custom/text.css">
+    <link rel="stylesheet" href="/css/custom/all.css">
+</head>
+
+<body id="body">
+    <section class="pages-section">
+        <div class="row">
+            <div class="col-12 col-md-3 col-lg-3 col-xl-2 order-1 order-md-1">
+                <div id="sidebar" class="sidebar" role="navigation">
+                    <!-- sidebar -->
+                    <%- include('sidebar') %>
+
+                </div>
+            </div>
+            <div class="col-12 col-md-9 col-lg-9 col-xl-10 order-2 order-md-2 page-content" role="main">
+                <div class="cust-container">
+                    <div class="profile-head-section">
+                        <div>
+                            <img class="profile-photo" src="/images/pages/profile-1.jpg" alt="profile-photo">
+                        </div>
+                        <div class="p-3">
+                            <p class="profile-name-text"><%=profile.username%> (<%=profile.name%>)</p>
+                            <%if(user.username==profile.username){%>
+                                <!-- swantham profile to be completed by students -->
+                                <div class="d-flex">
+                                    <button class="mb-2 mr-3" data-toggle="modal" data-target="#editprofilemoadal">Edit Profile</button>
+                                    <button class="mb-2 mr-3" data-toggle="modal" data-target="#changeprofilephoto">Change Profile Photo</button>
+                                    <button class="mb-2 mr-3">Share Profile</button>
+                                </div>
+                            <%}else{%>
+                                <% if(profile.followers.includes(user.id)){%>
+                                    <span class="text-white"> <%=profile.followers.length%> Followers</span>&nbsp;
+                                    <a href="/people/unfollow/<%=profile.id%>"><button class="mb-2 mr-3">Un Follow</button></a>
+                                    <a href="#"><button class="mb-2 mr-3">Message</button></a>
+
+                               <%}else{%>
+                                <div class="d-flex">
+                                    <span class="text-white"> <%=profile.followers.length%> Followers</span>&nbsp;
+                                    <a href="/people/follow/<%=profile.id%>"><button class="mb-2 mr-3">Follow</button></a>
+                                    
+                                </div>
+                               <%}%>
+                               
+                            <%}%>
+                          
+                        </div>
+                    </div>
+                    <hr style="background-color: white;">
+                    <div class="row">
+                        <% posts.forEach((p)=>{%>
+                            <div class="col-md-4 mb-4">
+                                <div class="post-card">
+    
+                                    <!-- Image -->
+                                    <img src="<%=p.image%>" class="post-image" alt="Siemens">
+                                    <!-- Card Body -->
+                                    <div class="card-body">
+                                        <p class="post-text">
+                                           <%=p.caption%>
+                                        </p>
+                                    </div>
+                                    <!-- Card Footer -->
+                                    <div class="card-footer d-flex justify-content-between align-items-center">
+                                        <i class="fa-regular fa-heart" style="cursor: pointer; color: white;"> <%=p.likes.length%></i>
+                                        <i class="fa-regular fa-comment" style="cursor: pointer; color: white;"></i>
+                                        <i class="fa-solid fa-share" style="cursor: pointer; color: white;"></i>
+                                    </div>
+                                </div>
+                            </div>
+                           
+                        <%})%>
+                     
+                    </div>
+                </div>
+            </div>
+
+            <!-- modal -->
+            <div class="modal fade" id="editprofilemoadal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Edit Profile</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="postForm">
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Name</label>
+                                    <input type="text" class="form-control" id="name" placeholder="Enter Name">
+                                  </div>
+                                  <div class="mb-3">
+                                    <label for="username" class="form-label">Username</label>
+                                    <input type="text" class="form-control" id="username" placeholder="Enter Username">
+                                  </div>
+                                <div class="mb-3">
+                                  <label for="email" class="form-label">Email or phone</label>
+                                  <input type="email" class="form-control" id="email" placeholder="Enter email or phone">
+                                </div>
+                                <div class="mb-3">
+                                  <label for="password" class="form-label">Password</label>
+                                  <input type="password" class="form-control" id="password" placeholder="Enter password">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success" id="postButton">Edit</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- change profile photo modal -->
+            <div class="modal fade" id="changeprofilephoto">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Create a Post</h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="postForm">
+                                <div class="form-group">
+                                    <label for="post-image">Upload Image</label>
+                                    <input type="file" class="form-control-file" id="post-image" accept="image/*">
+                                </div>
+                               
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success" id="postButton">Post</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+
+    </section>
+
+    <script src="./sidebar.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script>
+        $('#a6').addClass('sidebar-item-active')
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snapgram</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/fontawesome-web/css/all.css">
+    <link rel="stylesheet" href="/css/fontawesome-web/css/all.min.css">
+    <link rel="stylesheet" href="/css/custom/pages.css">
+    <link rel="stylesheet" href="/css/custom/text.css">
+    <link rel="stylesheet" href="/css/custom/all.css">
+    <link rel="stylesheet" href="/css/custom/messages.css">
+</head>
+<body id="body">
+    <section class="pages-section">
+        <div class="row">
+            <div class="col-12 col-md-3 col-lg-3 col-xl-2 order-1 order-md-1">
+                <div id="sidebar" class="sidebar" role="navigation">
+                    <!-- sidebar -->
+                    <%- include('sidebar') %>
+                </div>
+
+            </div>
+            <div class="col-12 col-md-9 col-lg-9 col-xl-10 order-2 order-md-2 page-content" role="main" style="width: 100%;height: 100vh;max-height: 100vh;overflow-x: hidden;overflow-y: scroll;">
+                <div class="cust-container">
+                    <div class="message-head">
+                        <div>
+                            <img class="profile-photo mb-3" src="/images/pages/profile-1.jpg" alt="profile-photo">
+                            <span class="username" style="color: aliceblue;"><%=user.username%> (<%=user.name%>)</span>
+                        </div>
+                    </div>
+                    <div class="message-box sent ml-auto mt-2">
+                        <span class="message-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. A corrupti ducimus cupiditate quia. Repellendus molestiae adipisci laboriosam saepe! Nihil in, praesentium labore dolores quaerat iure incidunt! Eveniet alias quae beatae?</span>
+                    </div>
+                    <div class="message-box receive">
+                        <span class="message-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. In, est. Voluptatem odio doloribus autem repellat modi aliquid quidem quas architecto quisquam sapiente, totam incidunt beatae ea, laudantium ab laboriosam sed fugit veritatis consequuntur neque expedita voluptatibus consectetur, debitis necessitatibus? Quam sapiente placeat illo facilis magni dolore animi accusamus reiciendis. Culpa ipsam aut dolore perspiciatis, libero adipisci qui corrupti voluptate!</span>
+                    </div>
+                    <% if(sentMessages){ %>
+                        <% sentMessages.forEach((m)=>{ %>
+                            <div class="message-box sent ml-auto mb-2">
+                                <span class="message-text"><%= m %></span>
+                            </div>
+                        <% }) %>
+                    <% } %>
+
+                    <div style="height: 50px;width: 100%;background-color: transparent;"></div>
+                    <div class="message-typing" style="position: fixed;bottom: 0;right: 0;width: 100%;">
+                        <form action="/message" method="post">
+                            <div class="form-group form-row " style="background-color: black;">
+                                <div class="col-8 offset-2">
+                                    <input type="text" class="form-control form-control-lg form-control-dark" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="type something..." name="message" style="border-radius: 20px;">
+                                </div>
+                                <div class="col-2">
+                                    <button type="submit" class="btn btn-primary btn-block btn-lg btn-dark" style="border-radius: 20px;">Sent</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+<script src="./sidebar.js"></script>
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script>
+        $('#a2').addClass('sidebar-item-active')
+    </script>
+</body>
+</html>

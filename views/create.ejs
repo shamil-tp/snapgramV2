@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snapgram</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/fontawesome-web/css/all.css">
+    <link rel="stylesheet" href="/css/fontawesome-web/css/all.min.css">
+    <link rel="stylesheet" href="/css/custom/pages.css">
+    <link rel="stylesheet" href="/css/custom/text.css">
+    <link rel="stylesheet" href="/css/custom/all.css">
+    <style>
+        .create-form {
+            background-color: rgb(243, 242, 242);
+            border-radius: 15px;
+            padding: 50px 25px;
+        }
+
+        .head-text-black{
+            font-size: 22px;
+            color: #000000;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none;
+            color: #000000;
+        }
+
+        .custom-btn {
+            background: rgb(79, 1, 112);
+            color: #ffff;
+            display: block;
+            margin: 0 auto;
+            border: none;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body id="body">
+    <section class="pages-section">
+        <div class="row">
+            <div class="col-12 col-md-3 col-lg-3 col-xl-2 order-1 order-md-1">
+                <div id="sidebar" class="sidebar" role="navigation">
+                    <!-- sidebar -->
+
+                </div>
+            </div>
+            <div class="col-12 col-md-9 col-lg-9 col-xl-10 order-2 order-md-2 page-content" role="main">
+                <div class="cust-container">
+                    <!-- <div class="p-5"><button data-toggle="modal" data-target="#myModal">Create a Post</button></div>
+    
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Create a Post</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="postForm">
+                        <div class="form-group">
+                            <label for="post-image">Upload Image</label>
+                            <input type="file" class="form-control-file" id="post-image" accept="image/*">
+                        </div>
+                        <div class="form-group">
+                            <label for="post-text">Write a Caption</label>
+                            <textarea class="form-control" id="post-text" rows="3" placeholder="Write something..."></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" id="postButton">Post</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div> -->
+                    <div class="create-form">
+                        <p class="head-text-black">Create a Post</p>
+                        <form action="/post/add" method="post"  enctype="multipart/form-data">
+                            <div class="mb-3">
+
+                                <label for="post-image" >Upload Image</label>
+                                <input type="file" class="form-control-file" id="post-image" accept="image/*" name="image" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="post-text">Write a Caption</label>
+                                <textarea class="form-control" id="post-text" rows="3"
+                                    placeholder="Write something..." name="caption" required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn  custom-btn">Post</button>
+
+                        </form>
+                       
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <script src="./sidebar.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script>
+        $('#a5').addClass('sidebar-item-active')
+    </script>
+</body>
+
+</html>
