@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snapgram</title>
-    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../static/css/fontawesome-web/css/all.css">
-    <link rel="stylesheet" href="../static/css/fontawesome-web/css/all.min.css">
-    <link rel="stylesheet" href="../static/css/custom/pages.css">
-    <link rel="stylesheet" href="../static/css/custom/text.css">
-    <link rel="stylesheet" href="../static/css/custom/all.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/fontawesome-web/css/all.css">
+    <link rel="stylesheet" href="/css/fontawesome-web/css/all.min.css">
+    <link rel="stylesheet" href="/css/custom/notification.css">
+    <link rel="stylesheet" href="/css/custom/pages.css">
+    <link rel="stylesheet" href="/css/custom/text.css">
+    <link rel="stylesheet" href="/css/custom/all.css">
+    
+
 </head>
 <body id="body">
     <section class="pages-section">
@@ -22,19 +25,41 @@
                 </div>
             </div>
             <div class="col-12 col-md-9 col-lg-9 col-xl-10 order-2 order-md-2 page-content" role="main">
-<div class="cust-container">
-
-</div>
+                <div class="cust-container">
+                        <div class="notification-box pb-3" id="notificationBox">
+                            <div class="notification">
+                                <div class="notification-header">
+                                    <h3 class="notification-title">New notification</h3>
+                                    <button onclick="close()"><i class="fa fa-times notification-close"></i></button>
+                                </div>
+                                <div class="notification-container">
+                                    <div class="notification-media">
+                                        <img src="/images/pages/profile-1.jpg" alt="" class="notification-user-avatar">
+                                        <i class="fa fa-thumbs-up notification-reaction"></i>
+                                    </div>
+                                    <div class="notification-content">
+                                        <p class="notification-text">
+                                            <strong>You Have a New Message</strong>
+                                        </p>
+                                        <span class="notification-timer">a few seconds ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                </div>
             </div>
         </div>
 
     </section>
 
-<script src="./sidebar.js"></script>
-    <script src="../static/js/jquery.min.js"></script>
-    <script src="../static/js/bootstrap.min.js"></script>
+<!-- <script src="./sidebar.js"></script> -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
     <script>
         $('#a3').addClass('sidebar-item-active')
+        function close(){
+            $('#notificationBox').addClass('close')
+        }
     </script>
 </body>
 </html>

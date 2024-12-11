@@ -30,6 +30,7 @@ const { getLoginPage, getRegisterPage, register, login, logout } = require('./co
 const { getFeeds, getAddPost, addPost, likeORUnlike, viewPost } = require('./controllers/feeds')
 const {messages,messageSent, getPeopleListForMessage} = require('./controllers/messages')
 const { getProfile, viewPeople, followPerson, unfollowPerson } = require('./controllers/profile')
+const { viewNotification} = require('./controllers/notifications')
 
 
 
@@ -44,6 +45,7 @@ app.get('/message',isLoggedIn,getPeopleListForMessage)
 
 // app.get('/messages',isLoggedIn,messages)
 // app.post('/message',messageSent)
+app.get('/notifications',isLoggedIn,viewNotification)
 
 app.get('/',isLoggedIn,getFeeds)
 app.get('/:username',getProfile)
@@ -60,6 +62,6 @@ app.get('/post/:postid/like',isLoggedIn,likeORUnlike)
 
 
 
-app.listen(8000,'192.168.1.12',()=>{
+app.listen(8000,'192.168.29.178',()=>{
     console.log("app started")
 })
